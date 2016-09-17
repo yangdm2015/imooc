@@ -1,0 +1,26 @@
+{
+  "name": "imooc",
+  "version": "0.0.1",
+  "description": "imooc ys",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "jade": "^1.11.0",
+    "moment": "^2.13.0",
+    "mongoose": "^4.5.3",
+    "underscore": "^1.8.3",
+    "mongo": "^0.1.0",
+    "pug": "^2.0.0-beta3",
+    "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "movie"
+  ],
+  "author": "Ydm",
+  "license": "ISC"
+}
