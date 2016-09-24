@@ -12,7 +12,7 @@ var dbUrl = 'mongodb://localhost/imooc'
 
 mongoose.connect(dbUrl)
 
-app.set('views','./views/jade')
+app.set('views','./app/views/jade')
 app.set('view engine','jade')
 /*app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())*/
