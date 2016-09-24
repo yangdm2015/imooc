@@ -1,0 +1,89 @@
+<html>
+<head>
+<meta charset="utf8">
+<title>iMovie 首页</title>
+<link href="../../public/libs/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="../../public/libs/jquery/dist/jquery.min.js"></script>
+<script src="../../public/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body youdao="bind">
+	<div class="container">
+		<div class="row">
+			<div class="page-header">
+				<h1>iMovie 首页</h1>
+				<small>重度科幻迷</small>
+			</div>
+		</div>
+	</div>
+	<div class="navbar navbar-default navbar-0fixed-bottom">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="/" class="navbar-brand">重度科幻迷</a>
+			</div>
+			<p class="navbar-text navbar-right">
+				<a href="#" data-toggle="modal" data-target="#signupModal"
+					class="navbar-link">注册</a>
+					<span>&nbsp;|&nbsp;</span>
+				<a href="#"
+					data-toggle="modal" data-target="#signinModal" class="navbar-link">登录</a>
+			</p>
+		</div>
+	</div>
+	<div id="signupModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form method="POST" action="/user/signup">
+					<div class="modal-header">注册</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="signupName">用户名</label><input id="signupName"
+								name="user[name]" type="text" class="form-control">
+						</div>
+						<div class="fotm-group">
+							<label for="signupPassword">密码</label><input id="signupPassword"
+								name="user[password]" type="text" class="form-control">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" data-dismiss="modal" class="btn btn-default">关闭</button>
+						<button type="submit" class="btn btn-success">提交</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="thumbnail">
+					<a href="/movie/5794d6cccb9a6fa871360659"><img
+						src="http://asearch.alicdn.com/bao/uploaded/i4/156940133717343037/TB2iFJ4gFXXXXXTXXXXXXXXXXXX_!!34945694-0-saturn_solar.jpg_250x250.jpg"
+						alt="中韩对抗赛"></a>
+					<div class="caption">
+						<h3>中韩对抗赛</h3>
+						<p>
+							<a href="/movie/5794d6cccb9a6fa871360659" role="button"
+								class="btn btn-primary">观看</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="thumbnail">
+					<a href="/movie/57dd39b71e0e71dc2c7d1562"><img
+						src=" http://img3.imgtn.bdimg.com/it/u=3945527243,1192502030&amp;fm=11&amp;gp=0.jpg"
+						alt="航天梦采访"></a>
+					<div class="caption">
+						<h3>航天梦采访</h3>
+						<p>
+							<a href="/movie/57dd39b71e0e71dc2c7d1562" role="button"
+								class="btn btn-primary">观看</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

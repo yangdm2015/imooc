@@ -1,0 +1,16 @@
+{
+  "name": "imooc",
+  "authors": [
+    "yangdm2015 <yangshan503@126.com>"
+  ],
+  "description": "0.0.1",
+  "main": "imooc movie scott",
+  "keywords": [
+    "movie"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
