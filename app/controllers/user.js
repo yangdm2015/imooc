@@ -1,12 +1,12 @@
 var User = require('../models/user');
 //signup
-exports.showSignup = function(req,res){		
+exports.showSignup = function(req,res){
 	c('in showSignup')
 	res.render('signup',{
 		title:'用户注册页面'
 	})
 }
-exports.showSignin = function(req,res){		
+exports.showSignin = function(req,res){
 	res.render('signin',{
 		title:'用户登陆页面'
 	})
@@ -82,24 +82,26 @@ exports.list = function(req,res){
 				title:'用户列表页',
 				users: users
 			})
-		})	
+		})
 	}
 	//midware for user
 exports.signinRequired = function(req,res,next){
 	var user = req.session.user
+	c('current user is ')
+	c(user)
 	if(!user){
 		return res.redirect('/signin')
 	}
 	next()
 }
 exports.adminRequired = function(req,res,next){
-  
+
 	var user = req.session.user
 	c('^^^user.role=^^^')
   c(user.role)
 	if(user.role<=10){
 		return res.redirect('/signin')
-	}	
+	}
 	next()
 }
 exports.del=function(req,res){

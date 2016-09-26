@@ -1,31 +1,31 @@
 
+var Comment = require('../models/comment');
 var Movie = require('../models/movie');
 var _ = require('underscore')
 //detail
 
-	exports.detail=function(req,res){
+exports.detail=function(req,res){
+	var id = req.params.id
 
-		console.log("^^^^^^^^^^ 进入 detail! ^^^^^^^^^^")
-		var id = req.params.id
-		console.log("######### req.params is   ##########")
-		console.log(req.params)
-		console.log("*********params ended!*************")
-		
-		Movie.findById(id,function(err,movie){
-			console.log("\n\n^^^^^^^^^^ 进入 detail里的findById!，此时movie是： ^^^^^^^^^^")
-			console.log(movie)
-		  console.log("*********movie ended!*************\n\n")
-		if(err){
-					console.log("*********here is err33333!*************")
-					console.log(err)
-				}
+	Movie.findById(id,function(err,movie){
+		Comment
+		.find({movie:id})
+		.populate('from','name')
+		.exec(function(err,comments){
+			c('comments')
+			c(comments)
+			if(err){
+						console.log("*********here is err33333!*************")
+						console.log(err)
+					}
 			res.render('detail',{
 				title: 'iMovie'+movie.title,
-				movie: movie
+				movie: movie,
+				comments:comments
 			})
-
 		})
-	}
+	})
+}
 
 //admin new page
 	exports.new = function(req,res){
@@ -65,12 +65,12 @@ exports.save = function(req,res){
 		var _movie
 		if(id !== 'undefined'){
 			Movie.findById(id,function(err,movie) {
-				
+
 				if(err){
 					console.log("*********here is err11111!*************")
 					console.log(err)
 				}
-				
+
 				_movie = _.extend(movie,movieObj)
 				_movie.save(function(err,movie){
 					if(err){
@@ -114,7 +114,7 @@ exports.save = function(req,res){
 				title:'imooc 列表页',
 				movies: movies
 			})
-		})	
+		})
 	}
 
 	//list delete movie
@@ -131,3 +131,6 @@ exports.save = function(req,res){
 			})
 		}
 	}
+	function c(str){
+	console.log(str)
+}
