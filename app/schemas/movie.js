@@ -1,14 +1,20 @@
 var mongoose = require('mongoose')
+var Schema = mongoose.Schema
+var ObjectId = Schema.Types.ObjectId
 
-var MovieSchema = new mongoose.Schema({
+var MovieSchema = new Schema({
   title:String,
-  doctor: String,  
+  doctor: String,
   conutry:String,
-  language:String, 
-  year:Number, 
+  language:String,
+  year:Number,
   summary:String,
   poster:String,
-  flash:String,   
+  flash:String,
+  category:{
+    type:ObjectId,
+    ref:'Category'
+  },
   meta:{
     createAt:{
       type:Date,
@@ -39,7 +45,7 @@ MovieSchema.statics = {
   },
   findById: function(id,cb){
     return this
-      .findOne({_id:id}) 
+      .findOne({_id:id})
       .exec(cb)
   }
 }

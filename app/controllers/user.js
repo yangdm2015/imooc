@@ -13,13 +13,13 @@ exports.showSignin = function(req,res){
 }
 exports.signup=function(req,res){
 		var _user = req.body.user
-		User.find({name:_user.name},function(err,user){
+		User.findOne({name:_user.name},function(err,user){
 			if(err){
 				c(err)
 			}
 			c('user1= ')
 			c(user)
-			if(user!=''){//这里有问题，当user还没有被注册时，user='',而if(user)为真，所以不能正确注册
+			if(user){//这里之前有问题，使用find方法，返回user是一个数组，当user还没有被注册时，user='',而if(user)为真，所以不能正确注册。当换成findOne方法后，就没有问题了
 				c('return res.redirect(signin)')
 				return res.redirect('/signin')
 			}else{
@@ -74,16 +74,16 @@ exports.signup=function(req,res){
 	}
 	//userlist
 exports.list = function(req,res){
-		User.fetch(function(err,users) {
-			if(err){
-				console.log(err)
-			}
-			res.render('userlist',{
-				title:'用户列表页',
-				users: users
-			})
+	User.fetch(function(err,users) {
+		if(err){
+			console.log(err)
+		}
+		res.render('userlist',{
+			title:'用户列表页',
+			users: users
 		})
-	}
+	})
+}
 	//midware for user
 exports.signinRequired = function(req,res,next){
 	var user = req.session.user

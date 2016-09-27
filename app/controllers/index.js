@@ -1,18 +1,20 @@
 var Movie = require('../models/movie');
+var Category = require('../models/category');
 
 exports.index = function(req,res){
-		c('user in session=')
-		c(req.session.user)
-		Movie.fetch(function(err,movies) {
+	Category
+		.find({})
+		.populate({path:'movies',options:{limit:5}})
+		.exec(function(err,categories){
 			if(err){
 				console.log(err)
 			}
 			res.render('index',{
 				title:'iMovie 首页',
-				movies: movies
+				categories: categories
 			})
 		})
-	}
-	function c(str){
-		console.log(str)
-	}
+}
+function c(str){
+	console.log(str)
+}
