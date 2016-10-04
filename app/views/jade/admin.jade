@@ -4,16 +4,19 @@ block content
 
     .container
         .row
-            form.form-horizontal(method="post", action="/admin/movie",enctype='application/json')
+            //form.form-horizontal(method="post", action="/admin/movie",enctype='application/json')
+            form.form-horizontal(method="post", action="/admin/movie",enctype='multipart/form-data')
                 .form-group
                     label.col-sm-2.control-label 豆瓣同步
                     .col-sm-10
                         input.form-control#douban(type='text')
-                    //- input(type="hidden",name="movie[_id]",value=movie._id) //这会导致传回了一个空的id
+
                 .form-group
                     label.col-sm-2.control-label(for="inputCategory")  电影分类
                     .col-sm-10
                         if movie._id
+                            input(type="hidden",name="movie[_id]",value=movie._id)
+                            //- 当此页面作为更新信息页面打开时，把这个input传入movie._id, 如果是新建，则没有这个input
                             input#inputCategory.form-control(type="text", name="movie[categoryName]", value=movie.category.name)
                         else
                             input#inputCategory.form-control(type="text", name="movie[categoryName]")
@@ -55,6 +58,10 @@ block content
                     label.col-sm-2.control-label(for="inputPoster")  海报地址
                     .col-sm-10
                         input#inputPoster.form-control(type="text", name="movie[poster]", value=movie.poster)
+                .form-group
+                    label.col-sm-2.control-label(for="uploadPoster")  海报上传
+                    .col-sm-10
+                        input#uploadPoster(type="file", name="uploadPoster")
                 .form-group
                     label.col-sm-2.control-label(for="inputFlash")  片源地址
                     .col-sm-10
