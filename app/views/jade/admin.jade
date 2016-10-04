@@ -1,16 +1,22 @@
 extends ../layout
 
 block content
+
     .container
         .row
             form.form-horizontal(method="post", action="/admin/movie",enctype='application/json')
-                if movie._id
-                    input(type="hidden",name="movie[_id]",value=movie._id)
-                    input(type="hidden",name="aaaaa",value="aaaaaaaaaaaaaaa")
+                .form-group
+                    label.col-sm-2.control-label 豆瓣同步
+                    .col-sm-10
+                        input.form-control#douban(type='text')
+                    //- input(type="hidden",name="movie[_id]",value=movie._id) //这会导致传回了一个空的id
                 .form-group
                     label.col-sm-2.control-label(for="inputCategory")  电影分类
                     .col-sm-10
-                        input#inputTitle.form-control(type="text", name="movie[categoryName]", value=movie.category.name)
+                        if movie._id
+                            input#inputCategory.form-control(type="text", name="movie[categoryName]", value=movie.category.name)
+                        else
+                            input#inputCategory.form-control(type="text", name="movie[categoryName]")
                 .form-group
                     label.col-sm-2.control-label 分类选择
                     each cat in categories
@@ -56,3 +62,5 @@ block content
                 .form-group
                     .col-sm-offset-2.col-sm-10
                     button.btn.btn-primary(type="submit") 提交
+    script(src="/js/movieadmin.js")
+//- script(src="/js/movieadmin1111111111.js")
