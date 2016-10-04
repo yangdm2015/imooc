@@ -8,7 +8,12 @@ var path = require('path')
 //detail
 
 exports.detail=function(req,res){
-	var id = req.params.id
+	var id = req.params.id;
+	Movie.update({_id:id},{$inc:{pv:1}},function(err){
+		if(err){
+			c(err)
+		}
+	})
 
 	Movie.findById(id,function(err,movie){
 		Comment
@@ -179,7 +184,11 @@ exports.save = function(req,res){
 
 //list page
 exports.list=function(req,res){
-	Movie.fetch(function(err,movies) {
+	Movie.find({})
+	.populate('category','name')
+	.exec(function(err,movies) {
+		c('movies')
+		c(movies)
 		if(err){
 			console.log(err)
 		}
