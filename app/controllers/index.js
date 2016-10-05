@@ -1,6 +1,6 @@
 var Movie = require('../models/movie');
 var Category = require('../models/category');
-
+function c(str){console.log(str)}
 exports.index = function(req,res){
 	Category
 		.find({})
@@ -58,11 +58,11 @@ exports.search = function(req,res){
 				})
 			})
 	}else{
-		c("q")
+		c(q)
 		c(q)
 		Movie.find({title:new RegExp(q+'.*','i')})
 		.exec(function(err,movies){
-			c("movies")
+			c('movies')
 			c(movies)
 			if(err){
 					console.log(err)
@@ -79,7 +79,4 @@ exports.search = function(req,res){
 		})
 	}
 
-}
-function c(str){
-	console.log(str)
 }

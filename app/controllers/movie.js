@@ -5,6 +5,7 @@ var Movie = require('../models/movie');
 var _ = require('underscore')
 var fs = require('fs')
 var path = require('path')
+function c(str){console.log(str)}
 //detail
 
 exports.detail=function(req,res){
@@ -24,7 +25,7 @@ exports.detail=function(req,res){
 			c('comments')
 			c(comments)
 			if(err){
-						console.log("*********here is err33333!*************")
+						console.log('*********here is err33333!*************')
 						console.log(err)
 					}
 			res.render('detail',{
@@ -52,7 +53,7 @@ exports.detail=function(req,res){
 	}
 }*/
 //admin update
-exports.update=function(req,res){
+/*exports.update=function(req,res){
 	var id = req.params.id
 	if(id){
 		Movie.findOne({_id:id})
@@ -70,6 +71,25 @@ exports.update=function(req,res){
 						movie:movie,
 						categories:categories,
 					})
+				})
+			})
+		})
+	}
+}*/
+//admin update
+exports.update=function(req,res){
+	var id = req.params.id
+	if(id){
+		Movie.findOne({_id:id})
+		.populate('category','name')
+		.exec(function(err,movie){
+			c('movie')
+			c(movie)
+			Category.find({},function(err,categories){
+				res.render('admin',{
+					title:'imooc 后台更新页',
+					movie:movie,
+					categories:categories,
 				})
 			})
 		})
@@ -115,27 +135,27 @@ exports.savePoster = function(req,res,next){
 
 //admin post movie
 exports.save = function(req,res){
-	console.log("|||||||||| here is new! ||||||||||||||")
+	console.log('|||||||||| here is new! ||||||||||||||')
 	var movieObj = req.body.movie
 	var id = req.body.movie._id
 	var _movie
 	if(req.poster){
 		movieObj.poster = req.poster
 	}
-	c("movieObj")
+	c('movieObj')
 	c(movieObj)
 	if(id ){
 		c('if(id)!!!!! ')
 		Movie.findById(id,function(err,movie) {
 			if(err){
-				console.log("*********here is err11111!*************")
+				console.log('*********here is err11111!*************')
 				console.log(err)
 			}
 
 			_movie = _.extend(movie,movieObj)
 			_movie.save(function(err,movie){
 				if(err){
-					console.log("*********here is err22222!*************")
+					console.log('*********here is err22222!*************')
 					console.log(err)
 				}
 				/*console.log("movie is "+movie)*/
@@ -152,7 +172,7 @@ exports.save = function(req,res){
 		c(categoryName)
 		_movie.save(function(err,movie){
 				if(err){
-					console.log("error incurred2222 movie="+movie)
+					console.log('error incurred2222 movie='+movie)
 					console.log(err)
 				}else{
 					if(categoryId){
@@ -212,7 +232,4 @@ exports.del=function(req,res){
 
 		})
 	}
-}
-function c(str){
-console.log(str)
 }

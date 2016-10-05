@@ -1,6 +1,7 @@
 var mongoose = require('mongoose')
 var bcrypt = require('bcrypt-nodejs')
 var SALT_WORK_FACTOR =10;
+function c(str){console.log(str)}
 
 var UserSchema = new mongoose.Schema({
   name:{
@@ -61,13 +62,10 @@ UserSchema.statics = {
   },
   findById: function(id,cb){
     return this
-      .findOne({_id:id}) 
+      .findOne({_id:id})
       .exec(cb)
   }
 }
 module.exports = UserSchema
 
-function c(str){
-  console.log(str)
-}
 

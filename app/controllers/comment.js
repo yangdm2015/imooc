@@ -1,7 +1,7 @@
 
 var Comment = require('../models/comment');
 var _ = require('underscore')
-
+function c(str){console.log(str)}
 //comment
 exports.save = function(req,res){
   c('%%%%%%%%%%%%%%%%%  in save &&&&&&&&&&&&&&&')
@@ -50,6 +50,3 @@ exports.save = function(req,res){
 }
 
 
-function c(str){
-  console.log(str)
-}

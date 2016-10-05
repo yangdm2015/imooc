@@ -1,4 +1,5 @@
 var User = require('../models/user');
+function c(str){console.log(str)}
 //signup
 exports.showSignup = function(req,res){
 	c('in showSignup')
@@ -23,7 +24,7 @@ exports.signup=function(req,res){
 				c('return res.redirect(signin)')
 				return res.redirect('/signin')
 			}else{
-				var user = new User(_user)
+			  user = new User(_user)
 				c('user2= ')
 				c(user)
 				user.save(function(err,user){
@@ -120,7 +121,4 @@ exports.del=function(req,res){
 
 		})
 	}
-}
-function c(str){
-	console.log(str)
 }
